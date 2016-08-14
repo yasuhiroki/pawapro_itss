@@ -1,0 +1,43 @@
+body {
+    background: #EFEFF2;
+}
+
+table.engineer {
+    text-align: center;
+    font-size: small;
+}
+
+table.engineer th {
+    border: thin solid #000;
+    -moz-box-shadow: 1px 1px 1px rgba(000,000,000,0.3);
+     -webkit-box-shadow: 1px 1px 1px rgba(000,000,000,0.3);
+}
+
+table.engineer th.name {
+    border: unset;
+}
+
+.name {
+    font-size: large;
+}
+
+.career{
+    background: #A34;
+    border-radius: 3px;
+    padding: 2px 6px;
+    width: 160px;
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.85),0px 0px 5px rgba(0,0,0,1);
+    color: #FFF;
+}
+
+table.engineer td {
+    padding: 2px 6px;
+    width: 120px;
+}
+
+.status {
+    font-weight: bold;
+    font-size: xx-large;
+    text-shadow: 2px 2px 3px #000;
+    -webkit-text-stroke: 1px white;
+}

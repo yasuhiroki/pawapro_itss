@@ -1,0 +1,27 @@
+<h1>Listing Engineers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>能力</th>
+      <th colspan="3">操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @engineers.each do |engineer| %>
+      <tr>
+        <td>
+          <%= render 'status', engineer: engineer %>
+        <td>
+        <td><%= link_to 'Show', engineer %></td>
+        <td><%= link_to 'Edit', edit_engineer_path(engineer) %></td>
+        <td><%= link_to 'Destroy', engineer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Engineer', new_engineer_path %>

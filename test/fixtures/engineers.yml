@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  marketing: 1
+  consulting: 1
+  architect: 1
+  management: 1
+  specialist: 1
+  development: 1
+
+two:
+  name: MyString
+  marketing: 1
+  consulting: 1
+  architect: 1
+  management: 1
+  specialist: 1
+  development: 1

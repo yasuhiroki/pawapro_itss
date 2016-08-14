@@ -1,0 +1,87 @@
+<table class="engineer">
+  <thead>
+    <tr>
+      <th class="name">
+        <%= engineer.name %>
+      </th>
+      <% @status_titles.each do |title| %>
+        <th>
+          <%= title %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="career">
+          <%= engineer.career %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.marketing) %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.consulting) %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.architect) %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.management) %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.specialist) %>
+        </div>
+      </td>
+      <td>
+        <div class="status">
+          <%= print_status_rank(engineer.development) %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <div>
+          <%= engineer.marketing %>
+        </div>
+      </td>
+      <td>
+        <div>
+          <%= engineer.consulting %>
+        </div>
+      </td>
+      <td>
+        <div>
+          <%= engineer.architect %>
+        </div>
+      </td>
+      <td>
+        <div>
+          <%= engineer.management %>
+        </div>
+      </td>
+      <td>
+        <div>
+          <%= engineer.specialist %>
+        </div>
+      </td>
+      <td>
+        <div>
+          <%= engineer.development %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
