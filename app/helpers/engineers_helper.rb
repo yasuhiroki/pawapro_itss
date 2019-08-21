@@ -12,4 +12,8 @@ module EngineersHelper
       "A"
     end
   end
+
+  def get_status_rank_class(status)
+    "status-#{print_status_rank(status).downcase}"
+  end
 end
