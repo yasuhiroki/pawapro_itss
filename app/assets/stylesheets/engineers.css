@@ -36,8 +36,28 @@ table.engineer td {
 }
 
 .status {
-    font-weight: bold;
-    font-size: xx-large;
+    font-size: 3em;
+    font-family: Impact,Charcoal;
     text-shadow: 2px 2px 3px #000;
     -webkit-text-stroke: 1px white;
+}
+
+.status-a {
+    color: #A59;
+}
+
+.status-b {
+    color: #B00;
+}
+
+.status-c {
+    color: #B70;
+}
+
+.status-d {
+    color: #990;
+}
+
+.status-e {
+    color: #090;
 }

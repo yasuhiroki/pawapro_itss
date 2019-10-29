@@ -1,4 +1,4 @@
-class CreateEngineers < ActiveRecord::Migration
+class CreateEngineers < ActiveRecord::Migration[4.2]
   def change
     create_table :engineers do |t|
       t.string :name
