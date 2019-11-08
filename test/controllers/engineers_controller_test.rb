@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class EngineersControllerTest < ActionController::TestCase
+class EngineersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @engineer = engineers(:one)
   end
 
   test "should get index" do
-    get :index
+    get engineers_url
     assert_response :success
-    assert_not_nil assigns(:engineers)
   end
 
   test "should get new" do
-    get :new
+    get new_engineer_url
     assert_response :success
   end
 
   test "should create engineer" do
     assert_difference('Engineer.count') do
-      post :create, engineer: {  }
+      post engineers_url, params: { engineer: { name: :hoge } }
     end
 
-    assert_redirected_to engineer_path(assigns(:engineer))
+    assert_redirected_to engineer_url(Engineer.last)
   end
 
   test "should show engineer" do
-    get :show, id: @engineer
+    get engineer_url(@engineer)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @engineer
+    get edit_engineer_url(@engineer)
     assert_response :success
   end
 
   test "should update engineer" do
-    patch :update, id: @engineer, engineer: {  }
-    assert_redirected_to engineer_path(assigns(:engineer))
+    patch engineer_url(@engineer), params: { engineer: { name: :hoge } }
+    assert_redirected_to engineer_url(@engineer)
   end
 
   test "should destroy engineer" do
     assert_difference('Engineer.count', -1) do
-      delete :destroy, id: @engineer
+      delete engineer_url(@engineer)
     end
 
-    assert_redirected_to engineers_path
+    assert_redirected_to engineers_url
   end
 end
