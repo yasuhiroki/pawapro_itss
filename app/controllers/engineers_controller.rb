@@ -1,29 +1,32 @@
+# frozen_string_literal: true
+
 class EngineersController < ApplicationController
-  before_action :set_engineer, only: [:show, :edit, :update, :destroy]
+  before_action :set_engineer, only: %i[show edit update destroy]
 
-  CAREER_NAMES = [
-    "プログラマー",
-    "プロジェクトマネージャ",
-    "プロダクトマネージャ",
-    "テストエンジニア",
-    "セールスエンジニア",
-    "ITコンサルタント",
-    "セキュリティエンジニア",
-    "データベースエンジニア",
-    "インフラエンジニア",
-    "Webエンジニア",
-    "モバイルエンジニア",
-  ];
+  CAREER_NAMES = %w[
+    プログラマー
+    プロジェクトマネージャ
+    プロダクトマネージャ
+    テストエンジニア
+    セールスエンジニア
+    ITコンサルタント
+    セキュリティエンジニア
+    データベースエンジニア
+    インフラエンジニア
+    Webエンジニア
+    モバイルエンジニア
+  ].freeze
 
-  STATUS_TITLES = [
-    "マーケティング",
-    "コンサルティング",
-    "アーキテクト",
-    "マネジメント",
-    "スペシャリスト",
-    "デベロップメント",
-  ];
-  STATUS_BASES = [0, 20, 40, 60, 80];
+  STATUS_TITLES = %w[
+    マーケティング
+    コンサルティング
+    アーキテクト
+    マネジメント
+    スペシャリスト
+    デベロップメント
+  ].freeze
+
+  STATUS_BASES = [0, 20, 40, 60, 80].freeze
 
   # GET /engineers
   # GET /engineers.json
@@ -44,23 +47,22 @@ class EngineersController < ApplicationController
   end
 
   # GET /engineers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /engineers
   # POST /engineers.json
   def create
     @engineer = Engineer.new(engineer_params)
 
-    seed = @engineer.name.chars.map{|c| c.ord}.reduce{|p,c| p + c} % 100
+    seed = @engineer.name.chars.map(&:ord).reduce { |p, c| p + c } % 100
 
     @engineer.career = generate_career(seed)
-    @engineer.marketing = generate_status(seed, "m".ord)
-    @engineer.consulting = generate_status(seed, "c".ord)
-    @engineer.architect = generate_status(seed, "a".ord)
-    @engineer.management = generate_status(seed, "M".ord)
-    @engineer.specialist = generate_status(seed, "s".ord)
-    @engineer.development = generate_status(seed, "d".ord)
+    @engineer.marketing = generate_status(seed, 'm'.ord)
+    @engineer.consulting = generate_status(seed, 'c'.ord)
+    @engineer.architect = generate_status(seed, 'a'.ord)
+    @engineer.management = generate_status(seed, 'M'.ord)
+    @engineer.specialist = generate_status(seed, 's'.ord)
+    @engineer.development = generate_status(seed, 'd'.ord)
 
     respond_to do |format|
       if @engineer.save
@@ -98,24 +100,24 @@ class EngineersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_engineer
-      @engineer = Engineer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def engineer_params
-      params.fetch(:engineer, {})
-      params.require(:engineer).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_engineer
+    @engineer = Engineer.find(params[:id])
+  end
 
-    def generate_status(seed, status_seed)
-      base = STATUS_BASES[(Random.new(seed * status_seed).rand * 10 % STATUS_BASES.length).to_i]
-      base + (Random.new(seed + status_seed).rand * 100 % 20).to_i
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def engineer_params
+    params.fetch(:engineer, {})
+    params.require(:engineer).permit(:name)
+  end
 
-    def generate_career(seed)
-      CAREER_NAMES[(Random.new(seed).rand * 10 % CAREER_NAMES.length).to_i]
-    end
+  def generate_status(seed, status_seed)
+    base = STATUS_BASES[(Random.new(seed * status_seed).rand * 10 % STATUS_BASES.length).to_i]
+    base + (Random.new(seed + status_seed).rand * 100 % 20).to_i
+  end
 
+  def generate_career(seed)
+    CAREER_NAMES[(Random.new(seed).rand * 10 % CAREER_NAMES.length).to_i]
+  end
 end
